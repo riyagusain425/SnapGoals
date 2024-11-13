@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/ea59660221.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&family=Sen:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="nav-logo">
+        <a href="index.html">Ta<span style="color: blue">sk</span>.</a>
+      </div>
+      <div class="nav-content hide">
+        <div class="nav-item try">
+          <a href="index.html"><span>HOME</span></a>
+        </div>
+        <div class="nav-item try">
+          <a href=""><span>About Us</span></a>
+        </div>
+        <div class="nav-item try">
+          <a href=""><span>Contact Us</span></a>
+        </div>
+        <div class="nav-item try">
+          <a href=""><span>Services</span></a>
+        </div>
+      </div>
+      <div class="nav-sign-a">
+        <div>Sign IN</div>
+        <div>Sign UP</div>
+        <button class="clk">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- banner -->
+    <div class="banner">
+      <div class="banner-text">Lorem ipsum dolor sit amet.</div>
+      <div class="banner-button">
+        <div class="button1"><button>journal</button></div>
+        <div class="button2">
+          <button><a href="task.html">Add Task</a></button>
+        </div>
+      </div>
+    </div>
+    <div class="social">
+      <div class="social-media">
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-whatsapp"></a>
+      </div>
+    </div>
+
+    <footer>
+      <p class="end">
+        Copyright &copy; 2027 www.snapgoals.com- All rights reserved.|Created by Blue
+        Lock
+      </p>
+    </footer>
+    <script>
+      let btn = document.querySelector(".clk");
+      let nav_content = document.querySelector(".nav-content");
+
+      btn.addEventListener("click", () => {
+        nav_content.classList.toggle("hide");
+      });
+    </script>
+  </body>
+</html>

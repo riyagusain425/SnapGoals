@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "express": "^4.21.1",
+    "mongoose": "^8.7.2"
+  },
+  "name": "backEnd",
+  "version": "1.0.0",
+  "main": "crudTask.js",
+  "devDependencies": {},
+  "scripts": {
+    "start":"crudTask.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

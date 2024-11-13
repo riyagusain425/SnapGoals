@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Form</title>
+    
+</head>
+
+
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to fetch and display tasks
+            const fetchTasks = async () => {
+                try {
+                    const response = await fetch('/api/tasks', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(task)
+                        });
+
+                    // const response = await fetch('/tasks');
+                    const tasks = await response.json();
+                    const taskList = document.getElementById('task-list');
+                    taskList.innerHTML = '';
+
+                    tasks.forEach(task => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `
+                            <span style="text-decoration: ${task.completed ? 'line-through' : 'none'}">
+                                ${task.title} - ${task.description} (Due: ${task.dueDate}, Reminder: ${task.reminderDate})
+                            </span>
+                            <button onclick="deleteTask('${task._id}')">Delete</button>
+                            <input type="checkbox" onclick="toggleComplete('${task._id}', this.checked)" ${task.completed ? 'checked' : ''}> Complete
+                        `;
+                        taskList.appendChild(listItem);
+                    });
+                } catch (error) {
+                    console.error('Error fetching tasks:', error);
+                }
+            };
+
+            // Fetch and display tasks on page load
+            fetchTasks();
+
+            // Handle form submission
+            document.getElementById('task-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const title = document.getElementById('title').value;
+                const description = document.getElementById('description').value;
+                const due = document.getElementById('due').value;
+                const reminder = document.getElementById('reminder').value;
+
+                const task = {
+                    title,
+                    description,
+                    due,
+                    reminder
+                };
+                
+                try {
+                    const response = await fetch('/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(task)
+                    });
+
+                    const result = await response.text();
+                    alert(result); // Show response message
+                    document.getElementById('task-form').reset();
+                    fetchTasks(); // Refresh the task list
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            });
+
+            // Function to delete a task
+            const deleteTask = async (id) => {
+                try {
+                    const response = await fetch(`/tasks/${id}`, {
+                        method: 'DELETE'
+                    });
+                    const result = await response.text();
+                    alert(result); // Show response message
+                    fetchTasks(); // Refresh the task list
+                } catch (error) {
+                    console.error('Error deleting task:', error);
+                }
+            };
+
+            // Function to toggle the completion status of a task
+            const toggleComplete = async (id, completed) => {
+                try {
+                    const response = await fetch(`/tasks/${id}/complete`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ completed })
+                    });
+                    const result = await response.json();
+                    alert(`Task ${result.completed ? 'completed' : 'incomplete'}`);
+                    fetchTasks(); // Refresh the task list
+                } catch (error) {
+                    console.error('Error updating task status:', error);
+                }
+            };
+
+            // Make functions globally accessible
+            window.deleteTask = deleteTask;
+            window.toggleComplete = toggleComplete;
+        });
+    </script>
+<body>
+    
+       
+
+
+      <!--    task     -->
+    <div id="task-form">
+    <form id="task-form">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required><br><br>
+        <label for="due">Due Date:</label>
+        <input type="date" id="due" name="due" required><br><br>
+        <label for="reminder">Reminder Date:</label>
+        <input type="date" id="reminder" name="reminder" required><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+
+
+    
+    
+    <ul id="task-list"></ul>
+</body>
+</html>

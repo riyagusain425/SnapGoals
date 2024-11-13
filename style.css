@@ -1,0 +1,164 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgba(235, 241, 250, 0.986);
+  font-family: "Sen", sans-serif;
+}
+a {
+  text-decoration: none;
+  color: black;
+  /* color: white; */
+}
+.navbar {
+  width: 100%;
+  display: flex;
+  height: auto;
+
+  border-bottom: 2px solid black;
+  background-color: white;
+  height: 70px;
+  align-items: center;
+}
+.nav-logo {
+  width: 30%;
+}
+.nav-logo a {
+  margin-left: 20px;
+  font-size: 30px;
+  /* color: white; */
+}
+.nav-content {
+  display: flex;
+  text-transform: lowercase;
+  width: 40%;
+  background-color: white;
+
+  justify-content: space-around;
+}
+.nav-item {
+  transition: 1s;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.nav-sign-a {
+  width: 30%;
+  display: flex;
+  justify-content: end;
+}
+.nav-sign-a div {
+  justify-content: end;
+  background-color: rgba(235, 241, 250, 0.986);
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 15px;
+}
+.clk {
+  display: none;
+}
+a:active {
+  border-bottom: 2px solid blue;
+  color: red;
+}
+.try span:hover {
+  border-bottom: 2px solid blue;
+}
+.banner {
+  height: 60vh;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  font-size: 40px;
+}
+.banner .banner-text {
+  margin-top: 35%;
+}
+.banner-button {
+  margin-top: 30px;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 30px;
+  /* width: 30px; */
+}
+.banner-button a {
+  color: white;
+}
+.banner-button button {
+  width: 130px;
+  padding: 15px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid blue;
+  background-color: blue;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 02px;
+}
+.social {
+  border: 1px solid rebeccapurple;
+  position: relative;
+  top: auto;
+}
+/* media css */
+@media screen and (max-width: 450px) {
+  .nav-content {
+    position: absolute;
+    flex-direction: column;
+    top: 70px;
+    border-bottom: 3px solid blue;
+    width: 100%;
+    left: 0px;
+    text-align: center;
+    padding: 10px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    transition: all 0.5s;
+  }
+  .nav-item {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .clk {
+    display: inline;
+  }
+  .hide {
+    display: none;
+  }
+  .nav-logo {
+    width: 40%;
+    height: 40px;
+    top: 0px;
+    margin-left: 0px;
+  }
+  .nav-logo a {
+    margin: 0px 10px;
+
+    position: absolute;
+
+    top: 20px;
+  }
+  .nav-sign-a {
+    width: 60%;
+  }
+  .nav-sign-a div {
+    margin-right: 0px;
+    font-size: 15px;
+    padding: 07px;
+    margin-left: 05px;
+    margin-top: 02px;
+  }
+  .clk {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .clk i {
+    padding: 05px;
+    font-size: 20px;
+  }
+}
